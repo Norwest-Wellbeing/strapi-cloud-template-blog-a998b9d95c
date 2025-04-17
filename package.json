@@ -22,6 +22,7 @@
     "@strapi/plugin-cloud": "5.12.4",
     "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "5.12.4",
+    "@strapi/provider-email-amazon-ses": "^5.12.5",
     "@strapi/strapi": "5.12.4",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",
@@ -36,7 +37,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-85d24752-825e-4665-9e79-e22fb56ed4f9"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
