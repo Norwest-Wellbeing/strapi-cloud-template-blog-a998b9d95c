@@ -10,4 +10,16 @@ export default [
   'strapi::favicon',
   'strapi::public',
   'global::deepPopulate'
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'script-src': ['https://cdn.ckeditor.com'],
+          'connect-src': ['https://proxy-event.ckeditor.com']
+        },
+      },
+    },
+  },
 ];
