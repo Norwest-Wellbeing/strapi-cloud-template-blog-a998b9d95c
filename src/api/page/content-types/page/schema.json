@@ -20,6 +20,9 @@
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
+        "webtools": {
+            "enabled": true
+        },
         "i18n": {
           "localized": true
         }
