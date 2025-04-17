@@ -14095,19 +14095,6 @@ stdin-discarder@^0.2.2:
   resolved "https://registry.yarnpkg.com/stdin-discarder/-/stdin-discarder-0.2.2.tgz#390037f44c4ae1a1ae535c5fe38dc3aba8d997be"
   integrity sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==
 
-strapi-plugin-sitemap@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/strapi-plugin-sitemap/-/strapi-plugin-sitemap-3.2.1.tgz#a3678802a1bac9e668f7bd7bba49b8b2593b9233"
-  integrity sha512-+7xy8/gUyynWb5UMP+l3NZ1W/ZghVkonJ8DvusCBINEb1/Xf4MWJgqDnSfJI1vK3Pb8RRn6L1YIB3Ql63Hx/Tg==
-  dependencies:
-    chalk "^4.1.2"
-    commander "^8.3.0"
-    immutable "^3.8.2"
-    redux-immutable "^4.0.0"
-    redux-thunk "^2.3.0"
-    sitemap "^7.1.0"
-    xml2js "^0.5.0"
-
 stream-chain@2.2.5, stream-chain@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/stream-chain/-/stream-chain-2.2.5.tgz#b30967e8f14ee033c5b9a19bbe8a2cba90ba0d09"
