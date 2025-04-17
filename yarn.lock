@@ -99,25 +99,6 @@
   dependencies:
     "@ucast/mongo2js" "^1.3.0"
 
-"@ckeditor/ckeditor5-integrations-common@^2.2.2":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-integrations-common/-/ckeditor5-integrations-common-2.2.3.tgz#41c9fdb25f29b2f1c60bd85bd4a9a0b68fd51100"
-  integrity sha512-92kQWQj1wiABF7bY1+J79Ze+WHr7pwVBufn1eeJLWcTXbPQq4sAolfKv8Y8Ka9g69mdyE9+GPWmGFYDeQJVPDg==
-
-"@ckeditor/ckeditor5-react@^9.3.0":
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-react/-/ckeditor5-react-9.5.0.tgz#c539b8d2013573254619b62b9ccbcbf870abeebf"
-  integrity sha512-0NEBg3EDQaQDwj9xswC34qspDiNgXMIn41lZ3pjNx915NWRabqQDnR5a8TisPaOlx3gHnIdOXJ0BH1wRHsJxhQ==
-  dependencies:
-    "@ckeditor/ckeditor5-integrations-common" "^2.2.2"
-
-"@ckeditor/strapi-plugin-ckeditor@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@ckeditor/strapi-plugin-ckeditor/-/strapi-plugin-ckeditor-1.1.1.tgz#2b1ec733b08c04c69e88e5d210d8ea54b0387ed1"
-  integrity sha512-9uSnpq1zDvmW+2xpKSPsM11A/FTkK3q+JcmgBJVU6qNuR1WCkaYrQml8d/O43akOlHXng5ODCyVf2pVdYZpfOg==
-  dependencies:
-    "@ckeditor/ckeditor5-react" "^9.3.0"
-
 "@codemirror/autocomplete@^6.0.0":
   version "6.18.6"
   resolved "https://registry.npmjs.org/@codemirror/autocomplete/-/autocomplete-6.18.6.tgz"

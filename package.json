@@ -19,7 +19,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@ckeditor/strapi-plugin-ckeditor": "^1.1.1",
     "@strapi/plugin-cloud": "5.12.4",
     "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "5.12.4",
