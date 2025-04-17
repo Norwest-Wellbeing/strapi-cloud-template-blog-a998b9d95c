@@ -46,9 +46,5 @@
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "resolutions": {
-    "@swc/core": "^1.7.22",
-    "@swc/core-linux-x64-gnu": "^1.7.22"
-  }
+  "license": "MIT"
 }
