@@ -31,8 +31,10 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-webtools": "^1.4.1",
     "styled-components": "^6.0.0",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "webtools-addon-sitemap": "^1.2.1"
   },
   "author": {
     "name": "A Strapi developer"
