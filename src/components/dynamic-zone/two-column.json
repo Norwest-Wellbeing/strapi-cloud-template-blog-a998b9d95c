@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_dynamic_zone_two_columns",
+  "info": {
+    "displayName": "Two Column Section",
+    "icon": "columns",
+    "description": "Section with two columns, switchable image sides"
+  },
+  "attributes": {
+    "heading":    { "type": "string" },
+    "text":       { "type": "richtext" },
+    "leftImage":  { "type": "media", "multiple": false, "required": true },
+    "rightImage": { "type": "media", "multiple": false, "required": true },
+    "reverse":    { "type": "boolean", "default": false, "description": "Swap image sides" },
+    "button":     { "type": "component", "repeatable": false, "component": "shared.button" }
+  }
+}
