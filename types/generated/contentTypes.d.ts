@@ -430,9 +430,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         i18n: {
           localized: true;
         };
-        webtools: {
-          enabled: true;
-        };
       }>;
     slug: Schema.Attribute.UID<'title'> &
       Schema.Attribute.SetPluginOptions<{
@@ -510,9 +507,6 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
         i18n: {
           localized: true;
         };
-        webtools: {
-          enabled: true;
-        };
       }>;
     sub_heading: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -537,11 +531,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: false;
   };
-  pluginOptions: {
-    webtools: {
-      enabled: true;
-    };
-  };
   attributes: {
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
@@ -556,17 +545,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    sitemap_exclude: Schema.Attribute.Boolean &
-      Schema.Attribute.Private &
-      Schema.Attribute.DefaultTo<false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url_alias: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools.url-alias'
-    > &
-      Schema.Attribute.Unique;
   };
 }
 
@@ -717,7 +698,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'dynamic-zone.cta',
         'dynamic-zone.form-next-to-section',
         'dynamic-zone.faq',
-        'dynamic-zone.practitioner-column',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -732,9 +712,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
-        };
-        webtools: {
-          enabled: true;
         };
       }>;
     slug: Schema.Attribute.UID &
@@ -798,9 +775,6 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
     i18n: {
       localized: true;
     };
-    webtools: {
-      enabled: true;
-    };
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -845,9 +819,6 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    sitemap_exclude: Schema.Attribute.Boolean &
-      Schema.Attribute.Private &
-      Schema.Attribute.DefaultTo<false>;
     sub_heading: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -857,11 +828,6 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url_alias: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools.url-alias'
-    > &
-      Schema.Attribute.Unique;
   };
 }
 
@@ -875,11 +841,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
   options: {
     draftAndPublish: true;
-  };
-  pluginOptions: {
-    webtools: {
-      enabled: true;
-    };
   };
   attributes: {
     categories: Schema.Attribute.Relation<
@@ -906,18 +867,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     plans: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'>;
     price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    sitemap_exclude: Schema.Attribute.Boolean &
-      Schema.Attribute.Private &
-      Schema.Attribute.DefaultTo<false>;
     slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url_alias: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools.url-alias'
-    > &
-      Schema.Attribute.Unique;
   };
 }
 
@@ -1493,143 +1446,6 @@ export interface PluginUsersPermissionsUser
   };
 }
 
-export interface PluginWebtoolsAddonSitemapSitemap
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'wt_sitemap';
-  info: {
-    displayName: 'sitemap';
-    pluralName: 'sitemaps';
-    singularName: 'sitemap';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    delta: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
-    link_count: Schema.Attribute.Integer;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools-addon-sitemap.sitemap'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'default'>;
-    publishedAt: Schema.Attribute.DateTime;
-    sitemap_string: Schema.Attribute.Text & Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['default_hreflang', 'index']> &
-      Schema.Attribute.DefaultTo<'default_hreflang'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface PluginWebtoolsUrlAlias extends Struct.CollectionTypeSchema {
-  collectionName: 'wt_url_alias';
-  info: {
-    displayName: 'url-alias';
-    pluralName: 'url-alias';
-    singularName: 'url-alias';
-  };
-  options: {
-    comment: '';
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    contenttype: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    generated: Schema.Attribute.Boolean &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Schema.Attribute.DefaultTo<true>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools.url-alias'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    url_path: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-  };
-}
-
-export interface PluginWebtoolsUrlPattern extends Struct.CollectionTypeSchema {
-  collectionName: 'wt_url_patterns';
-  info: {
-    displayName: 'url-pattern';
-    pluralName: 'url-patterns';
-    singularName: 'url-pattern';
-  };
-  options: {
-    comment: '';
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
-  attributes: {
-    contenttype: Schema.Attribute.String & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    languages: Schema.Attribute.JSON & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::webtools.url-pattern'
-    > &
-      Schema.Attribute.Private;
-    pattern: Schema.Attribute.String & Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
@@ -1662,9 +1478,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::webtools-addon-sitemap.sitemap': PluginWebtoolsAddonSitemapSitemap;
-      'plugin::webtools.url-alias': PluginWebtoolsUrlAlias;
-      'plugin::webtools.url-pattern': PluginWebtoolsUrlPattern;
     }
   }
 }
