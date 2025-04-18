@@ -19,6 +19,10 @@ const extractPathSegment = (url: string) => url.match(/\/([^/?]+)(?:\?|$)/)?.[1]
 
 const getDeepPopulate = (uid: string, opts: Options = {}) => {
   const model = strapi.getModel(uid);
+  if (!model) {
+    throw new Error(`Model not found for UID: ${uid}`);
+  }
+
   const attributes = Object.entries(model.attributes) as [
     string,
     {
@@ -83,18 +87,22 @@ const getDeepPopulate = (uid: string, opts: Options = {}) => {
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   return async (ctx, next) => {
-    if (ctx.request.url.startsWith('/api/') && ctx.request.method === 'GET' && !ctx.query.populate && !ctx.request.url.includes('/api/users') && !ctx.request.url.includes('/api/seo')
+    if (
+      ctx.request.url.startsWith('/api/') &&
+      ctx.request.method === 'GET' &&
+      !ctx.query.populate &&
+      !ctx.request.url.includes('/api/users') &&
+      !ctx.request.url.includes('/api/seo')
     ) {
       strapi.log.info('Using custom Dynamic-Zone population Middleware...');
 
       const contentType = extractPathSegment(ctx.request.url);
-      const singular = pluralize.singular(contentType)
+      const singular = pluralize.singular(contentType);
       const uid = `api::${singular}.${singular}`;
 
       ctx.query.populate = {
-        // @ts-ignores 
         ...getDeepPopulate(uid),
-        ...(!ctx.request.url.includes("products") && { localizations: { populate: {} } })
+        ...(!ctx.request.url.includes('products') && { localizations: { populate: {} } }),
       };
     }
     await next();
