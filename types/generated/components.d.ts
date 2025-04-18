@@ -183,6 +183,23 @@ export interface DynamicZoneLaunches extends Struct.ComponentSchema {
   };
 }
 
+export interface DynamicZonePractitionerColumn extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_zone_practitioner_columns';
+  info: {
+    description: 'Section with two columns, switchable image sides';
+    displayName: 'Practitioner Column';
+    icon: 'columns';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'shared.button', false>;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media & Schema.Attribute.Required;
+    imagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'right'>;
+    text: Schema.Attribute.RichText;
+  };
+}
+
 export interface DynamicZonePricing extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_pricings';
   info: {
@@ -520,6 +537,7 @@ declare module '@strapi/strapi' {
       'dynamic-zone.hero': DynamicZoneHero;
       'dynamic-zone.how-it-works': DynamicZoneHowItWorks;
       'dynamic-zone.launches': DynamicZoneLaunches;
+      'dynamic-zone.practitioner-column': DynamicZonePractitionerColumn;
       'dynamic-zone.pricing': DynamicZonePricing;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
