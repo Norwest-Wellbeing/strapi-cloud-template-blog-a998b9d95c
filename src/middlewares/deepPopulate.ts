@@ -18,7 +18,7 @@ const { CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } = contentTypes.constants;
 const extractPathSegment = (url: string) => url.match(/\/([^/?]+)(?:\?|$)/)?.[1] || '';
 
 const getDeepPopulate = (uid: string, opts: Options = {}) => {
-  const model = strapi.getModel(uid);
+  const model = strapi.getModel(uid as unknown as Schema);
   if (!model) {
     throw new Error(`Model not found for UID: ${uid}`);
   }
