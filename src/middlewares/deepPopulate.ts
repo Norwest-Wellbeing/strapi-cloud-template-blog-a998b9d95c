@@ -23,7 +23,7 @@ const getDeepPopulate = (uid: string, opts: Options = {}) => {
     throw new Error(`Model not found for UID: ${uid}`);
   }
 
-  const attributes = Object.entries(model.attributes) as [
+  const attributes = Object.entries(model.attributes) as Array<[
     string,
     {
       type: string;
@@ -31,7 +31,7 @@ const getDeepPopulate = (uid: string, opts: Options = {}) => {
       component?: string;
       components?: string[];
     }
-  ];
+  ]>;
 
   return attributes.reduce((acc: any, [attributeName, attribute]) => {
     switch (attribute.type) {
