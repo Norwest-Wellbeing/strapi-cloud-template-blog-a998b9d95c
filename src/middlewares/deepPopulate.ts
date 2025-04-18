@@ -2,7 +2,7 @@
  * `deepPopulate` middleware
  */
 
-import type { Core } from '@strapi/strapi';
+import type { Core, Schema } from '@strapi/strapi';
 import { UID } from '@strapi/types';
 import { contentTypes } from '@strapi/utils';
 import pluralize from 'pluralize';
@@ -19,7 +19,7 @@ const { CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } = contentTypes.constants;
 
 const extractPathSegment = (url: string) => url.match(/\/([^/?]+)(?:\?|$)/)?.[1] || '';
 
-const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
+const getDeepPopulate = (uid: Schema.UID, opts: Options = {}) => {
   const model = strapi.getModel(uid);
   const attributes = Object.entries(model.attributes);
 
@@ -60,7 +60,7 @@ const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
       case 'dynamiczone': {
         // Use fragments to populate the dynamic zone components
         const populatedComponents = (attribute.components || []).reduce(
-          (acc: any, componentUID: UID.Component) => {
+          (acc: any, componentUID: Schema.UID) => {
             acc[componentUID] = { populate: getDeepPopulate(componentUID, opts) };
 
             return acc;
