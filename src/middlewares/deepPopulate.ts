@@ -2,7 +2,12 @@
  * `deepPopulate` middleware
  */
 
+<<<<<<< HEAD
 import type { Core, Schema } from '@strapi/strapi';
+=======
+import type { Core } from '@strapi/strapi';
+import { UID } from '@strapi/types';
+>>>>>>> parent of 3f61c83 (reverse image)
 import { contentTypes } from '@strapi/utils';
 import pluralize from 'pluralize';
 
@@ -17,7 +22,11 @@ const { CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } = contentTypes.constants;
 
 const extractPathSegment = (url: string) => url.match(/\/([^/?]+)(?:\?|$)/)?.[1] || '';
 
+<<<<<<< HEAD
 const getDeepPopulate = (uid: string, opts: Options = {}) => {
+=======
+const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
+>>>>>>> parent of 3f61c83 (reverse image)
   const model = strapi.getModel(uid);
   if (!model) {
     throw new Error(`Model not found for UID: ${uid}`);
@@ -66,7 +75,11 @@ const getDeepPopulate = (uid: string, opts: Options = {}) => {
       case 'dynamiczone': {
         // Use fragments to populate the dynamic zone components
         const populatedComponents = (attribute.components || []).reduce(
+<<<<<<< HEAD
           (acc: any, componentUID: string) => {
+=======
+          (acc: any, componentUID: UID.Component) => {
+>>>>>>> parent of 3f61c83 (reverse image)
             acc[componentUID] = { populate: getDeepPopulate(componentUID, opts) };
 
             return acc;
