@@ -18,20 +18,12 @@ const { CREATED_BY_ATTRIBUTE, UPDATED_BY_ATTRIBUTE } = contentTypes.constants;
 const extractPathSegment = (url: string) => url.match(/\/([^/?]+)(?:\?|$)/)?.[1] || '';
 
 const getDeepPopulate = (uid: string, opts: Options = {}) => {
-  const model = strapi.getModel(uid);
+  // Use strapi.contentTypes to access the model by UID in Strapi v5
+  // If this doesn't work, you can fallback to strapi.getModel(uid as any)
+  const model = strapi.contentTypes[uid];
   if (!model) {
     throw new Error(`Model not found for UID: ${uid}`);
   }
-
-  const attributes = Object.entries(model.attributes) as Array<[
-    string,
-    {
-      type: string;
-      relation?: string;
-      component?: string;
-      components?: string[];
-    }
-  ]>;
 
   const attributes = Object.entries(model.attributes) as Array<[
     string,
@@ -118,4 +110,3 @@ export default (config, { strapi }: { strapi: Core.Strapi }) => {
     await next();
   };
 };
-
