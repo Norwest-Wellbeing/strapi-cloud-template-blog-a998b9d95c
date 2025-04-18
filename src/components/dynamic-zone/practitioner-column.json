@@ -9,7 +9,12 @@
     "heading":    { "type": "string" },
     "text":       { "type": "richtext" },
     "image":      { "type": "media", "multiple": false, "required": true },
-    "reverse":    { "type": "boolean", "default": false, "description": "Swap image sides" },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "right",
+      "description": "Position of the image box"
+    },
     "button":     { "type": "component", "repeatable": false, "component": "shared.button" }
   }
 }
