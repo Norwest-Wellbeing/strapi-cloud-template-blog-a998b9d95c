@@ -8,8 +8,7 @@
   "attributes": {
     "heading":    { "type": "string" },
     "text":       { "type": "richtext" },
-    "leftImage":  { "type": "media", "multiple": false, "required": true },
-    "rightImage": { "type": "media", "multiple": false, "required": true },
+    "image":      { "type": "media", "multiple": false, "required": true },
     "reverse":    { "type": "boolean", "default": false, "description": "Swap image sides" },
     "button":     { "type": "component", "repeatable": false, "component": "shared.button" }
   }
