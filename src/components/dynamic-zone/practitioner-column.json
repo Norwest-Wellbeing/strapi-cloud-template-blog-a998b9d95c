@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_dynamic_zone_two_columns",
+  "collectionName": "components_dynamic_zone_practitioner_columns",
   "info": {
-    "displayName": "Two Column Section",
+    "displayName": "Practitioner Column",
     "icon": "columns",
     "description": "Section with two columns, switchable image sides"
   },
